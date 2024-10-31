@@ -36,7 +36,8 @@ jobs:
 
       # Paso 6: Desplegar al servidor mediante SCP
       - name: Desplegar al servidor vía SCP
-        run: scp -r build/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}/
+        run: |
+          scp -r build/* ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}/
         # Nota: Asegúrate de que DEPLOY_PATH termina con una barra diagonal (/)
 
       # Paso 7: Reiniciar Nginx en el servidor (Opcional)
