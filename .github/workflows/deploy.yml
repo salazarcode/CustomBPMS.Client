@@ -42,7 +42,7 @@ jobs:
       # Paso 7: Desplegar al servidor mediante rsync
       - name: Desplegar al servidor vía rsync
         run: |
-          rsync -avz --delete build/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
+          rsync -avz --delete build/wwwroot/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
         # Nota: Asegúrate de que DEPLOY_PATH termina con una barra diagonal (/)
 
       # Paso 8: Reiniciar Nginx en el servidor (Opcional)
