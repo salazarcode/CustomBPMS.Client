@@ -3,7 +3,7 @@ name: Build and Deploy Blazor WebAssembly
 on:
   push:
     branches:
-      - main # Cambia a la rama que prefieras para despliegues
+      - master
 
 jobs:
   build-and-deploy:
