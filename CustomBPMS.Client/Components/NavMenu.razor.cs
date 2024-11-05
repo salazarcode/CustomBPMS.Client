@@ -1,4 +1,4 @@
-namespace CustomBPMS.Client.Layout
+namespace CustomBPMS.Client.Components
 {
     public partial class NavMenu
     {

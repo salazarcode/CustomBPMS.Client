@@ -1,0 +1,92 @@
+﻿@page "/"
+@layout LandingLayout
+
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: #e0e0e0; /* Fondo gris pastel */
+        font-family: Arial, sans-serif;
+    }
+
+    /* Estilos para la navegación */
+    .navbar {
+        background-color: transparent;
+        padding-top: 1rem;
+    }
+
+    .navbar-brand {
+        font-weight: bold;
+        color: #333;
+    }
+
+    .navbar-nav .nav-link {
+        color: #333;
+        font-weight: 500;
+    }
+
+        .navbar-nav .nav-link.active {
+            text-decoration: underline;
+        }
+
+    /* Contenedor central */
+    .content-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        text-align: center;
+        color: #333;
+    }
+
+        .content-container h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .content-container p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+    /* Botón de navegación */
+    .login-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+</style>
+
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="#">Salazarcode</a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre mi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contacto</a>
+                </li>
+                <li class="nav-item warning">
+                    <a class="nav-link" href="/admin">Ingresar</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Contenedor central -->
+<div class="content-container">
+    <div>
+        <h1>salazarcode.net</h1>
+        <p>El sitio web de un ingeniero de software con poco css en su curriculum</p>
+    </div>
+</div>
