@@ -1,13 +1,18 @@
 ﻿<Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(AdminLayout)" />
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(LandingLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
         <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(AdminLayout)">
-            <p role="alert">¿A dónde cree que se dirige caballere?</p>
-            <img src="./img/elegancia.jpg" width="200" />
+        <LayoutView Layout="@typeof(LandingLayout)">
+            <!-- Contenedor central -->
+            <div class="content-container">
+                <div>
+                    <h1>¿A dónde cree que se dirige caballere?</h1>
+                    <img src="./img/elegancia.jpg" width="200" />
+                </div>
+            </div>
         </LayoutView>
     </NotFound>
 </Router>
