@@ -13,24 +13,34 @@
         max-width: 960px;
         min-width: 250px;
         border: solid #3A3126 2px;
-        height: auto;
-        padding: 0;
         margin-top: 3vh;
+        padding: 1vw;
     }
 
     header {
-        height: 50vh;
-        height: 5vh;
         font-size: 1.5em;
         margin-bottom: 2vh;
+    }
 
+    header h1 {
+        text-align: center;
+        font-family: fantasy;
+        font-size: 1.6em;
+    }
+
+    header img {
+        width: 50%;
+        max-width: 300px;
+        min-width: 300px;
     }
 
     .container p {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
-    .border_button {}
+    .button-container {
+        margin-bottom: 2vh;
+    }
 
     .magenta_border {
         border: solid magenta 2px;
@@ -40,8 +50,15 @@
 
 <div class="container">
     <header class="@(AddBorderIfOn(""))">
-        Logo
+        <img src="./img/perro.gif" alt="two men drinking something">
+
+        <h1>Aún no llego a la parte de centrar divs, pero proximamente.</h1>
+
     </header>
+
+    <div class="@(AddBorderIfOn("button-container"))">
+        <input type="button" value="@(bordersOn ? "Quitar bordes" : "Mostrar bordes")" @onclick="ToogleBorders">
+    </div>
 
     <p class="@(AddBorderIfOn(""))">En los años 70 y 80, la inteligencia artificial se basaba principalmente en sistemas
         de reglas y lógica
@@ -66,24 +83,7 @@
         cambio radical en el enfoque: de sistemas limitados por reglas estáticas a modelos basados en datos que se
         entrenan y mejoran continuamente en un ciclo de retroalimentación.</p>
 
-    <div class="@(AddBorderIfOn(""))">
+    <div class="@(AddBorderIfOn("button-container"))">
         <input type="button" value="@(bordersOn ? "Quitar bordes" : "Mostrar bordes")" @onclick="ToogleBorders">
     </div>
 </div>
-
-@code {
-    bool bordersOn = true;
-
-    public string AddBorderIfOn(string originalClasses)
-    {
-        string? border = bordersOn ? "magenta_border" : null;
-        var res = $"{originalClasses} {border}";
-        return res;
-    }
-
-    public void ToogleBorders()
-    {
-        bordersOn = !bordersOn;
-    }
-
-}
