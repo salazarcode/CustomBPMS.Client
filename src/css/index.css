@@ -44,6 +44,10 @@ h2{
 }
 
 @media (max-width:800px){
+    body{
+        font-size: 10pt;
+    }
+
     .row{
         flex-direction: column;
     }
