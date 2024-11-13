@@ -1,0 +1,40 @@
+body{
+    background: #1a272c;
+    color: white;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 15pt;
+    padding: 0;
+    margin: 0;
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    color: #5ca3be;
+}
+
+.content{
+    margin: auto;
+    width: 80%;
+}
+
+.row{
+    display:flex;
+    justify-content: space-between;
+}
+
+.col{
+    width: 30%;
+}
+
+@media (max-width:800px){
+    .row{
+        flex-direction: column;
+    }
+    .col{
+        width: 100%;
+    }
+}
