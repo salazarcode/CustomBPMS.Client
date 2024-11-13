@@ -1,4 +1,4 @@
-name: Build and Deploy Blazor WebAssembly
+name: Deploy Static Site
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,37 +14,23 @@ jobs:
       - name: Clonar el repositorio
         uses: actions/checkout@v3
 
-      # Paso 2: Configurar .NET 8
-      - name: Configurar .NET 8
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: "8.0.x" # Especifica la versión de .NET 8
-
-      # Paso 3: Restaurar dependencias
-      - name: Restaurar dependencias
-        run: dotnet restore
-
-      # Paso 4: Publicar la aplicación Blazor WebAssembly
-      - name: Publicar la aplicación Blazor WebAssembly
-        run: dotnet publish -c Release -o build
-
-      # Paso 5: Configurar el Agente SSH
+      # Paso 2: Configurar el Agente SSH
       - name: Configurar el Agente SSH
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # Paso 6: Agregar la clave del host del servidor a known_hosts
+      # Paso 3: Agregar la clave del host del servidor a known_hosts
       - name: Agregar host a known_hosts
         run: |
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      # Paso 7: Desplegar al servidor mediante rsync
+      # Paso 4: Desplegar al servidor mediante rsync
       - name: Desplegar al servidor vía rsync
         run: |
-          rsync -avz --delete build/wwwroot/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
+          rsync -avz --delete . ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
         # Nota: Asegúrate de que DEPLOY_PATH termina con una barra diagonal (/)
 
-      # Paso 8: Reiniciar Nginx en el servidor (Opcional)
+      # Paso 5: Reiniciar Nginx en el servidor (Opcional)
       - name: Reiniciar Nginx
         run: ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} 'sudo systemctl restart nginx'
