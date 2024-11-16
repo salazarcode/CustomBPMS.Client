@@ -69,3 +69,24 @@ nav a{
 nav a:hover{
     color:#5ee41b;
 }
+
+@media (min-width:650px) and (max-width:930px){
+    main{
+        display:flex;
+        justify-content: flex-start;
+    }
+    main article{
+        margin-right: 2em;
+    }
+    main article p{
+        font-size: 0.7rem;
+    }
+    nav a{
+        font-size: 1.5em;
+    }
+}
+
+
+@media (min-width:931px){
+
+}
