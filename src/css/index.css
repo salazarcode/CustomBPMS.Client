@@ -38,7 +38,7 @@ main article p{
     font-size: 0.8rem;
 }
 
-footer{
+nav{
     background: #0C3B2E;
     height:10%;
     box-sizing: border-box;
@@ -49,23 +49,23 @@ footer{
     flex-direction: column;
 }
 
-footer ul{
+nav ul{
     display: flex;
     justify-content:space-around;
     margin:0;
     padding:0;
 }
-footer li{
+nav li{
     height: 100%;
     padding: 0.5em;
     list-style-type: none;
     text-align: center;
 }
 
-footer nav a{
+nav a{
     color:#FFBA00;
 }
 
-footer nav a:hover{
+nav a:hover{
     color:#5ee41b;
 }
