@@ -1,4 +1,4 @@
-name: Deploy Static Site
+name: Build and Deploy Blazor WebAssembly
 
 on:
   push:
@@ -6,31 +6,36 @@ on:
       - master
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Clonar el repositorio
       - name: Clonar el repositorio
         uses: actions/checkout@v3
 
-      # Paso 2: Configurar el Agente SSH
+      - name: Configurar .NET 8
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Restaurar dependencias
+        run: dotnet restore TorosClient/TorosClient.csproj
+
+      - name: Publicar la aplicación Blazor WebAssembly
+        run: dotnet publish TorosClient/TorosClient.csproj -c Release -o build
+
       - name: Configurar el Agente SSH
         uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      # Paso 3: Agregar la clave del host del servidor a known_hosts
       - name: Agregar host a known_hosts
         run: |
           ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
-      # Paso 4: Desplegar al servidor mediante rsync
       - name: Desplegar al servidor vía rsync
         run: |
-          rsync -avz --delete . ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
-        # Nota: Asegúrate de que DEPLOY_PATH termina con una barra diagonal (/)
+          rsync -avz --delete build/wwwroot/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:${{ secrets.DEPLOY_PATH }}
 
-      # Paso 5: Reiniciar Nginx en el servidor (Opcional)
       - name: Reiniciar Nginx
         run: ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} 'sudo systemctl restart nginx'
