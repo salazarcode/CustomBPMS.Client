@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "TorosClient",
   "resources": {
-    "hash": "sha256-RbWbyiqQPV8jcMCll1p9pnHzij+C4WFstHu2wh790sw=",
+    "hash": "sha256-EPVQt1osWPrCTomt6fEGpj3RGQff/JVHBNIlyLcK62A=",
     "jsModuleNative": {
       "dotnet.native.8.0.7.37dkch2d2y.js": "sha256-tFsxPBbhkdn6GKNBKvCRLzrfAHdyM86odYTe0MtrwMk="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-fLbZiSHBNdpHoh4EgRqMaNP5NQyIK5TEj6AXFLqo8m8=",
       "netstandard.wasm": "sha256-d4xbAE8qrKq5euUoZHPO+jkYPjlCYBzUew45MKsYKic=",
       "System.Private.CoreLib.wasm": "sha256-8yi6NcX1lkNQgV4WKjnMBYIZyKh4P+OXnXVQmgxGZD4=",
-      "TorosClient.wasm": "sha256-JLKpaAP2R9qP7jO2BUSGalVP/DpwJd9lC/o8PafOdOU="
+      "TorosClient.wasm": "sha256-52/25SN7Q8xAv41wExNp7W7E6m+DHnv/JctBe7ex8zk="
     },
     "pdb": {
-      "TorosClient.pdb": "sha256-Re08rsMmrl59RrmCp2dtJmYS3kJo4eOy1Z2tmHMYC8A="
+      "TorosClient.pdb": "sha256-mxWoucwDGgft/J689N4I2r6cu58qnjYdOYFp1aHqsog="
     }
   },
   "cacheBootResources": true,
